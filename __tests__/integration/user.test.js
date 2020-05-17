@@ -8,7 +8,7 @@ describe('User', () => {
       .send({
         name: 'Milford Rempel',
         email: 'milford@sample.com',
-        pashword_hash: '123456786675',
+        password_hash: '123456786675',
       });
 
     expect(response.body).toHaveProperty('id');

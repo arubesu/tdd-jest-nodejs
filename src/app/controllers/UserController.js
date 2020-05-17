@@ -2,7 +2,7 @@ import User from '../models/User';
 
 class UserController {
   async store(req, res) {
-    const { name, email, password_hash } = req.body;
+    const { email } = req.body;
 
     const exists = await User.findOne({
       where: {
@@ -16,11 +16,7 @@ class UserController {
         .json({ error: 'This email is already registered' });
     }
 
-    const user = await User.create({
-      name,
-      email,
-      password_hash,
-    });
+    const user = await User.create(req.body);
 
     return res.status(201).json(user);
   }

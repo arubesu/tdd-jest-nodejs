@@ -8,7 +8,7 @@ function userMock() {
   return {
     name: 'Milford Rempel',
     email: 'milfor1d@sample.com',
-    password_hash: '123456786675',
+    password: '123456786675',
   };
 }
 
@@ -21,7 +21,7 @@ describe('User', () => {
     const mock = userMock();
     const user = await User.create(mock);
 
-    const hashResult = bcrypt.compare(mock.password, user.password_hash);
+    const hashResult = await bcrypt.compare(mock.password, user.password_hash);
     expect(hashResult).toBeTruthy();
   });
 
